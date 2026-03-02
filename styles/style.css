@@ -1,0 +1,17 @@
+* {
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+
+}
+
+.font-bangla {
+    font-family: "Hind Siliguri", sans-serif;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 110rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2rem);
+}
