@@ -1,6 +1,8 @@
 
 const vocabulariesDataLevel = async () => {
 
+    spinnerApiLoader(true);
+
     const res = await fetch("https://openapi.programming-hero.com/api/levels/all");
     const json = await res.json();
     displayDataLevel(json.data);
@@ -10,7 +12,21 @@ const vocabulariesDataLevel = async () => {
     //     .then((res) => res.json())
     //     .then((jsonData) => console.log(jsonData.data))
 
+    spinnerApiLoader(false);
 }
+
+// spinner added function 
+const spinnerApiLoader = (status) => {
+    if (status == true) {
+        document.getElementById("spinner-container").classList.remove("hidden");
+        document.getElementById("word-container").classList.add("hidden");
+    } else {
+        document.getElementById("spinner-container").classList.add("hidden");
+        document.getElementById("word-container").classList.remove("hidden");
+    }
+
+}
+
 
 // synonyms word function
 const showSynonymsWord = (arr) => {
@@ -66,14 +82,16 @@ const wordDetailsData = (details) => {
 
 // btnclick function 
 const btnWordData = (id) => {
-    // console.log(id)
+
+    // api loading
+    spinnerApiLoader(true);
+
     const url = `https://openapi.programming-hero.com/api/level/${id}`;
 
     fetch(url)
         .then((res) => res.json())
         .then((json) => {
             const clickBtn = document.getElementById(`lesson-btn-${id}`);
-
             removeActiveBtn();
             clickBtn.classList.add("active")
 
@@ -94,6 +112,7 @@ const displayWordData = (words) => {
                     <h2 class="text-4xl font-bangla font-semibold">নেক্সট Lesson এ যান</h2>
             </div>
             `;
+        spinnerApiLoader(false);
         return;
     }
 
@@ -120,7 +139,7 @@ const displayWordData = (words) => {
         wordContainer.append(div)
     }
 
-
+    spinnerApiLoader(false);
 }
 
 

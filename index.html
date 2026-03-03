@@ -134,29 +134,47 @@
 
     <!-- main section start -->
 
-    <div id="word-container" class=" bg-base-200 p-5 grid grid-cols-3 gap-5 rounded-2xl">
 
-        <div class="col-span-full text-center space-y-4 py-6">
-            <p class="font-bangla font-semibold text-gray-500">আপনি এখনো কোন Lesson Select করেন ন</p>
-            <h2 class="text-4xl font-bangla font-semibold">একটি Lesson Select করুন।</h2>
-        </div>
 
-    </div>
+
 
     <section class="container  mb-[clamp(4rem,8vw,12.5rem)] space-y-7">
 
         <div class="container">
+
             <h2 class="font-bold text-4xl text-center">
                 <span class="text-[#00bcff]">Let's</span> Learn Vocabularies
             </h2>
 
+            <!-- main display first time load data all button-->
             <div id="display-level" class="container mt-7 flex gap-4 justify-center flex-wrap">
+
             </div>
+
+            <!-- spinner  -->
+            <div id="spinner-container" class="flex justify-center items-center py-14 hidden">
+                <span class="loading loading-spinner loading-xl"></span>
+            </div>
+
+
+
+            <!-- button click and all word show and show container  er behtore sob data thakbe-->
+            <div id="word-container" class=" bg-base-200 p-5 grid grid-cols-3 gap-5 rounded-2xl">
+
+
+                <!-- first time landing page data show -->
+                <div class="col-span-full text-center space-y-4 py-14">
+                    <p class="font-bangla font-semibold text-gray-500">আপনি এখনো কোন Lesson Select করেন ন</p>
+                    <h2 class="text-4xl font-bangla font-semibold">একটি Lesson Select করুন।</h2>
+                </div>
+
+
+            </div>
+
 
         </div>
 
     </section>
-
 
 
     <!-- modal  -->
@@ -175,8 +193,6 @@
             </div>
         </div>
     </dialog>
-
-
 
     <!-- main section end-->
 
