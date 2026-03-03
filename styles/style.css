@@ -20,3 +20,19 @@
     background-color: blue;
     color: white;
 }
+
+
+:root {
+
+    --bg-color: #ffffff;
+    --text-color: #111827;
+    --nav: #ffffff;
+    --modal-word: #1f2937;
+}
+
+[data-theme="dark"] {
+    --bg-color: #134f5d;
+    --text-color: #f9fafb;
+    --nav: #134f5d;
+    --modal-word: #134f5d;
+}

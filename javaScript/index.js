@@ -17,9 +17,9 @@ const vocabulariesDataLevel = async () => {
 
 // sound speech vocabulary
 function pronounceWord(word) {
-  const utterance = new SpeechSynthesisUtterance(word);
-  utterance.lang = "en-EN"; // English
-  window.speechSynthesis.speak(utterance);
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "en-EN"; // English
+    window.speechSynthesis.speak(utterance);
 }
 
 
@@ -38,7 +38,7 @@ const spinnerApiLoader = (status) => {
 
 // synonyms word function
 const showSynonymsWord = (arr) => {
-    let newSynonyms = arr.map((elem) => `<span class="btn-synonyms p-3 py-2 bg-sky-100 rounded-lg">${elem}</span>`)
+    let newSynonyms = arr.map((elem) => `<span class="btn-synonyms p-3 py-2  rounded-lg">${elem}</span>`)
     return newSynonyms.join(" ");
 }
 
@@ -64,7 +64,7 @@ const wordDetailsData = (details) => {
 
     const wordDetailsContainer = document.getElementById("word_details_container");
     wordDetailsContainer.innerHTML = `
-                 <div class="border border-sky-200 rounded-lg   p-4">
+                 <div class="border border-sky-200 rounded-lg modal-word  p-4">
                     <h2 class="font-bangla text-2xl font-semibold mb-4">${details.word} (<i
                             class="fa-solid fa-microphone-lines"></i>:${details.pronunciation})</h2>
                     <h3 class="font-semibold">Meaning</h3>
@@ -73,7 +73,7 @@ const wordDetailsData = (details) => {
                     <p class="font-medium mb-4">${details.sentence}</p>
                     <p class="font-bangla font-medium mb-2">সমার্থক শব্দ গুলো</p>
                     <div class="space-y-2">
-                      <div class="flex gap-2">
+                      <div class="synonyms flex gap-2">
                         ${showSynonymsWord(details.synonyms)}
                       </div>
                     </div>
@@ -134,9 +134,9 @@ const displayWordData = (words) => {
                 <div class="font-bangla text-2xl font-semibold">${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} / ${word.pronunciation ? word.pronunciation : "Pronounciation পাওয়া যায়নি"}</div>
                 <div class="flex justify-between pt-4">
 
-                    <button onclick="detailsWord(${word.id})" class="p-3 bg-[#e8f3fe] rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-circle-info"></i></button>
+                    <button onclick="detailsWord(${word.id})" class="p-3 text-2xl rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-circle-info"></i></button>
 
-                    <button onCLick=pronounceWord('${word.word}') class="p-3 bg-[#e8f3fe] rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-volume-high"></i></button>
+                    <button onCLick=pronounceWord('${word.word}') class="p-3 text-2xl rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-volume-high"></i></button>
                     
                 </div>
 
@@ -197,8 +197,45 @@ const searchBtn = document.getElementById("search-btn")
                 // console.log(allWord)
                 const searchData = allWord.filter((word) => word.word.toLowerCase().includes(inputValue));
 
-                displayWordData(searchData); 
+                displayWordData(searchData);
 
             });
 
     });
+
+
+
+// dark mode toggle
+const html = document.documentElement;
+const modeBtn = document.getElementById("theme-toggle");
+
+// default theme fallback
+const savedTheme = localStorage.getItem("theme") || "light";
+html.setAttribute("data-theme", savedTheme);
+
+// icon sync on load
+if (savedTheme === "dark") {
+    modeBtn.innerHTML =
+        `<i class="fa-regular fa-sun text-[clamp(2rem,5vw,2.75rem)]"></i>`;
+} else {
+    modeBtn.innerHTML =
+        `<i class="fa-regular fa-moon text-[clamp(2rem,5vw,2.75rem)] -rotate-30"></i>`;
+}
+
+modeBtn.addEventListener("click", () => {
+
+    const currentTheme = html.getAttribute("data-theme");
+
+    if (currentTheme === "light") {
+        html.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        modeBtn.innerHTML =
+            `<i class="fa-regular fa-sun text-[clamp(2rem,5vw,2.75rem)]"></i>`;
+    } else {
+        html.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+        modeBtn.innerHTML =
+            `<i class="fa-regular fa-moon text-[clamp(2rem,5vw,2.75rem)] -rotate-30"></i>`;
+    }
+
+});

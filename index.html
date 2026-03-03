@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -33,10 +33,10 @@
 <body>
 
     <!-- navbar start -->
+    <nav class="w-full flex z-50 sticky top-0 ">
 
-    <header class="container mb-[clamp(4rem,8vw,12.5rem)]">
-        <nav>
-            <div class="navbar container bg-base-100 shadow-sm bg-[#edf7ff]">
+        <div class="container">
+            <div class="navbar  bg-base-100  ">
                 <div class="navbar-start">
                     <div class="dropdown ">
                         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -70,10 +70,19 @@
                         <img src="./assets/logo.png" alt="">
                         <span class="font-bangla text-xl font-semibold">জানালা</span>
                     </a>
+
+
                 </div>
 
+                <div class="pl-30 md:pl-0">
+                    <button id="theme-toggle"><i
+                            class="text-[clamp(2rem,5vw,2.75rem)] justify-end font-bold -rotate-30 cursor-pointer fa-regular fa-moon"></i>
+                    </button>
+
+                </div>
+                
                 <div class="navbar-end hidden md:flex">
-                    <ul class="menu menu-horizontal px-1 space-x-2">
+                    <ul class="menu menu-horizontal space-x-2">
                         <li>
                             <a href="" class="btn btn-outline btn-primary border-2"><i
                                     class="fa-solid fa-circle-question"></i>FAQ</a>
@@ -88,13 +97,20 @@
                         </li>
 
                     </ul>
+
                 </div>
 
             </div>
-        </nav>
 
+        </div>
+
+
+
+    </nav>
+
+    <header class=" mb-[clamp(4rem,8vw,12.5rem)]">
         <!-- banner section start-->
-        <section>
+        <section class="container">
             <div class="container flex justify-between items-center gap-7 mt-13 flex-col-reverse sm:flex-row">
 
                 <div class="max-w-[clamp(20rem,90vw,45.4375rem)] w-full space-y-4 text-center sm:text-left">
@@ -155,8 +171,8 @@
             <!-- search input -->
             <div id="search-word" class="join flex justify-center py-7">
                 <div>
-                    <label class="input validator join-item outline-none ">
-                        <input id="search-input" type="text" placeholder="Search Vocabulary " />
+                    <label class="input validator join-item outline-none mx-auto">
+                        <input id="search-input" type="text" placeholder="Search Vocabulary" />
                     </label>
                 </div>
                 <button id="search-btn" class="btn btn-primary join-item">Search</button>
@@ -195,7 +211,7 @@
     <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
     <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box">
-            <div id="word_details_container" class=" bg-white rounded-2xl  space-y-1">
+            <div id="word_details_container" class=" modal-word rounded-2xl  space-y-1">
 
             </div>
             <div class="modal-action">
