@@ -15,6 +15,10 @@ const vocabulariesDataLevel = async () => {
     spinnerApiLoader(false);
 }
 
+
+
+
+
 // spinner added function 
 const spinnerApiLoader = (status) => {
     if (status == true) {
@@ -169,4 +173,28 @@ const displayDataLevel = (posts) => {
 
 }
 
-vocabulariesDataLevel()
+vocabulariesDataLevel();
+
+
+// search word input
+const searchBtn = document.getElementById("search-btn")
+    .addEventListener("click", () => {
+
+        removeActiveBtn(); // search er somoy sob button active remove hobe
+
+        const searchInput = document.getElementById("search-input");
+        const inputValue = searchInput.value.trim().toLowerCase();
+
+        const url = "https://openapi.programming-hero.com/api/words/all"
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                const allWord = data.data;
+                // console.log(allWord)
+                const searchData = allWord.filter((word) => word.word.toLowerCase().includes(inputValue));
+
+                displayWordData(searchData); 
+
+            });
+
+    });
