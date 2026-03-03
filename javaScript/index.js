@@ -18,7 +18,46 @@ const removeActiveBtn = () => {
 
 
 }
-removeActiveBtn()
+
+
+
+const detailsWord = async (id) => {
+
+    const url = `https://openapi.programming-hero.com/api/word/${id}`
+
+    const res = await fetch(url)
+    const detailsData = await res.json()
+    wordDetailsData(detailsData.data);
+
+}
+
+const wordDetailsData = (details) => {
+    // console.log(details)
+
+    const wordDetailsContainer = document.getElementById("word_details_container");
+    wordDetailsContainer.innerHTML = `
+                 <div class="border border-sky-200 rounded-lg  p-4">
+                    <h2 class="font-bangla text-2xl font-semibold mb-4">${details.word} (<i
+                            class="fa-solid fa-microphone-lines"></i>:${details.pronunciation})</h2>
+                    <h3 class="font-semibold">Meaning</h3>
+                    <p class="font-bangla font-semibold mb-4">${details.meaning}</p>
+                    <p class="font-semibold">Example</p>
+                    <p class="font-medium mb-4">${details.sentence}</p>
+                    <p class="font-bangla font-medium">সমার্থক শব্দ গুলো</p>
+                    <div class="flex gap-2">
+                        <p class="p-3 py-2 bg-sky-100 rounded-lg">Enthusiastic</p>
+                        <p class="p-3 py-2 bg-sky-100 rounded-lg">excited</p>
+                        <p class="p-3 py-2 bg-sky-100 rounded-lg">keen</p>
+                    </div>
+                </div>
+    
+    `;
+
+    document.getElementById("word_modal").showModal();
+
+}
+
+
 
 // btnclick function 
 const btnWordData = (id) => {
@@ -30,7 +69,7 @@ const btnWordData = (id) => {
         .then((json) => {
             const clickBtn = document.getElementById(`lesson-btn-${id}`);
 
-             removeActiveBtn();
+            removeActiveBtn();
             clickBtn.classList.add("active")
 
             displayWordData(json.data)
@@ -63,7 +102,7 @@ const displayWordData = (words) => {
                 <div class="font-bangla text-2xl font-semibold">${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} / ${word.pronunciation ? word.pronunciation : "Pronounciation পাওয়া যায়নি"}</div>
                 <div class="flex justify-between pt-4">
 
-                    <button class="p-3 bg-[#e8f3fe] rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-circle-info"></i></button>
+                    <button onclick="detailsWord(${word.id})" class="p-3 bg-[#e8f3fe] rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-circle-info"></i></button>
 
                     <button class="p-3 bg-[#e8f3fe] rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-volume-high"></i></button>
                     
@@ -76,12 +115,10 @@ const displayWordData = (words) => {
         wordContainer.append(div)
     }
 
-
 }
 
 
 const displayDataLevel = (posts) => {
-
     // 1.access the section display
     const displayContainer = document.getElementById("display-level");
     displayContainer.innerHTML = "";
