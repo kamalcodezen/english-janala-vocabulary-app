@@ -15,8 +15,12 @@ const vocabulariesDataLevel = async () => {
     spinnerApiLoader(false);
 }
 
-
-
+// sound speech vocabulary
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
 
 
 // spinner added function 
@@ -132,7 +136,7 @@ const displayWordData = (words) => {
 
                     <button onclick="detailsWord(${word.id})" class="p-3 bg-[#e8f3fe] rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-circle-info"></i></button>
 
-                    <button class="p-3 bg-[#e8f3fe] rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-volume-high"></i></button>
+                    <button onCLick=pronounceWord('${word.word}') class="p-3 bg-[#e8f3fe] rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-volume-high"></i></button>
                     
                 </div>
 
