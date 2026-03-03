@@ -11,6 +11,14 @@ const vocabulariesDataLevel = async () => {
     //     .then((jsonData) => console.log(jsonData.data))
 
 }
+
+// synonyms word function
+const showSynonymsWord = (arr) => {
+    let newSynonyms = arr.map((elem) => `<span class="btn-synonyms p-3 py-2 bg-sky-100 rounded-lg">${elem}</span>`)
+    return newSynonyms.join(" ");
+}
+
+
 // activeBtn remove class
 const removeActiveBtn = () => {
     const activeBtn = document.querySelectorAll(".active-btn");
@@ -19,16 +27,12 @@ const removeActiveBtn = () => {
 
 }
 
-
-
+// modal show 
 const detailsWord = async (id) => {
-
     const url = `https://openapi.programming-hero.com/api/word/${id}`
-
     const res = await fetch(url)
     const detailsData = await res.json()
     wordDetailsData(detailsData.data);
-
 }
 
 const wordDetailsData = (details) => {
@@ -36,20 +40,21 @@ const wordDetailsData = (details) => {
 
     const wordDetailsContainer = document.getElementById("word_details_container");
     wordDetailsContainer.innerHTML = `
-                 <div class="border border-sky-200 rounded-lg  p-4">
+                 <div class="border border-sky-200 rounded-lg   p-4">
                     <h2 class="font-bangla text-2xl font-semibold mb-4">${details.word} (<i
                             class="fa-solid fa-microphone-lines"></i>:${details.pronunciation})</h2>
                     <h3 class="font-semibold">Meaning</h3>
                     <p class="font-bangla font-semibold mb-4">${details.meaning}</p>
                     <p class="font-semibold">Example</p>
                     <p class="font-medium mb-4">${details.sentence}</p>
-                    <p class="font-bangla font-medium">সমার্থক শব্দ গুলো</p>
-                    <div class="flex gap-2">
-                        <p class="p-3 py-2 bg-sky-100 rounded-lg">Enthusiastic</p>
-                        <p class="p-3 py-2 bg-sky-100 rounded-lg">excited</p>
-                        <p class="p-3 py-2 bg-sky-100 rounded-lg">keen</p>
+                    <p class="font-bangla font-medium mb-2">সমার্থক শব্দ গুলো</p>
+                    <div class="space-y-2">
+                      <div class="flex gap-2">
+                        ${showSynonymsWord(details.synonyms)}
+                      </div>
                     </div>
                 </div>
+    
     
     `;
 
@@ -115,10 +120,12 @@ const displayWordData = (words) => {
         wordContainer.append(div)
     }
 
+
 }
 
 
 const displayDataLevel = (posts) => {
+
     // 1.access the section display
     const displayContainer = document.getElementById("display-level");
     displayContainer.innerHTML = "";
