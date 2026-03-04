@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="./assets/banner.png.png" alt="English Janala Banner" width="100%" />
+</p>
+
+
 🚀 English Janala – Interactive Vocabulary Learning App
 <p align="center"> <img src="https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript" /> <img src="https://img.shields.io/badge/TailwindCSS-3+-38BDF8?style=for-the-badge&logo=tailwindcss" /> <img src="https://img.shields.io/badge/DaisyUI-ComponentLibrary-purple?style=for-the-badge" /> <img src="https://img.shields.io/badge/API-Integrated-success?style=for-the-badge" /> <img src="https://img.shields.io/badge/Status-Active-blue?style=for-the-badge" /> </p>
 📘 Project Overview
