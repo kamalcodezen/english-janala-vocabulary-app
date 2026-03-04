@@ -170,7 +170,7 @@ const displayDataLevel = (posts) => {
         const div = document.createElement("div");
         div.innerHTML = `
               <button id="lesson-btn-${post.level_no}" onCLick="btnWordData(${post.level_no})" class="btn btn-outline btn-primary border-2 active-btn">
-              <i class="fa-solid fa-book-open"></i>${post.lessonName}-${post.level_no}</button>
+              <i class="fa-solid fa-book-open"></i>${post.lessonName}</button>
         
         `;
 
