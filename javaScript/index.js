@@ -128,21 +128,26 @@ const displayWordData = (words) => {
         const div = document.createElement("div");
         div.innerHTML = `
         
-            <div class="rounded-2xl p-5 bg-base-100 shadow text-center space-y-4 h-full">
-                <h2 class="font-bold text-2xl">${word.word ? word.word : "শব্দ পাওয়া যায়নি"}</h2>
-                <p class="font-semibold">Meaning /Pronounciation</p>
-                <div class="font-bangla text-2xl font-semibold">${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} / ${word.pronunciation ? word.pronunciation : "Pronounciation পাওয়া যায়নি"}</div>
-                <div class="flex justify-between pt-4">
+  <div class="rounded-2xl p-5 bg-base-100 shadow text-center  h-full flex flex-col justify-between">
+        <div class="space-y-4">
+            <h2 class="font-bold text-2xl">${word.word ? word.word : "শব্দ পাওয়া যায়নি"}</h2>
+            <p class="font-semibold">Meaning /Pronounciation</p>
+            <div class="font-bangla text-2xl font-semibold">${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} /
+                ${word.pronunciation ? word.pronunciation : "Pronounciation পাওয়া যায়নি"}</div>
+        </div>
 
-                    <button onclick="detailsWord(${word.id})" class="p-3 text-2xl rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-circle-info"></i></button>
+        <div class="flex justify-between pt-4">
+            <button onclick="detailsWord(${word.id})"
+                class="p-3 text-2xl rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i
+                    class="fa-solid fa-circle-info"></i></button>
 
-                    <button onCLick=pronounceWord('${word.word}') class="p-3 text-2xl rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i class="fa-solid fa-volume-high"></i></button>
-                    
-                </div>
+            <button onCLick=pronounceWord('${word.word}')
+                class="p-3 text-2xl rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i
+                    class="fa-solid fa-volume-high"></i></button>
+        </div>
 
-            </div>
-        
-           `;
+    </div>
+      `;
 
         wordContainer.append(div)
     }
@@ -165,7 +170,7 @@ const displayDataLevel = (posts) => {
         const div = document.createElement("div");
         div.innerHTML = `
               <button id="lesson-btn-${post.level_no}" onCLick="btnWordData(${post.level_no})" class="btn btn-outline btn-primary border-2 active-btn">
-              <i class="fa-solid fa-book-open"></i>Lesson -${post.level_no}</button>
+              <i class="fa-solid fa-book-open"></i>${post.lessonName}-${post.level_no}</button>
         
         `;
 
