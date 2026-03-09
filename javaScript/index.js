@@ -102,16 +102,20 @@ const btnWordData = (id) => {
             const clickBtn = document.getElementById(`lesson-btn-${id}`);
             removeActiveBtn();
             clickBtn.classList.add("active")
-
+            
             displayWordData(json.data)
+
         })
 }
 
 // btnClick and show all word function
 const displayWordData = (words) => {
     // console.log(words)
+
     const wordContainer = document.getElementById("word-container");
+
     wordContainer.innerHTML = "";
+
     if (words.length == 0) {
         wordContainer.innerHTML = `
             <div  class="col-span-full text-center space-y-4 py-6">
@@ -125,10 +129,11 @@ const displayWordData = (words) => {
     }
 
     for (let word of words) {
+
         const div = document.createElement("div");
         div.innerHTML = `
         
-  <div class="rounded-2xl p-5 bg-base-100 shadow text-center  h-full flex flex-col justify-between">
+  <div class="rounded-2xl p-5 bg-base-100 shadow text-center   h-full flex flex-col justify-between">
         <div class="space-y-4">
             <h2 class="font-bold text-2xl">${word.word ? word.word : "শব্দ পাওয়া যায়নি"}</h2>
             <p class="font-semibold">Meaning /Pronounciation</p>
@@ -139,7 +144,9 @@ const displayWordData = (words) => {
         <div class="flex justify-between pt-4">
             <button onclick="detailsWord(${word.id})"
                 class="p-3 text-2xl rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i
-                    class="fa-solid fa-circle-info"></i></button>
+                    class="fa-solid fa-circle-info"></i>
+                    
+            </button>
 
             <button onCLick=pronounceWord('${word.word}')
                 class="p-3 text-2xl rounded-lg cursor-pointer hover:scale-105 transition-all duration-300"><i
@@ -169,7 +176,7 @@ const displayDataLevel = (posts) => {
         // 3.div create and add innerHTML
         const div = document.createElement("div");
         div.innerHTML = `
-              <button id="lesson-btn-${post.level_no}" onCLick="btnWordData(${post.level_no})" class="btn btn-outline btn-primary border-2 active-btn">
+              <button id="lesson-btn-${post.level_no}" onCLick="btnWordData(${post.level_no})" class="btn btn-outline btn-primary border-2 active-btn w-full ">
               <i class="fa-solid fa-book-open"></i>${post.lessonName}</button>
         
         `;
@@ -209,6 +216,7 @@ const searchBtn = document.getElementById("search-btn")
     });
 
 
+// -----------------------------
 
 // dark mode toggle
 const html = document.documentElement;
